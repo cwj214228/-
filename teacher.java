@@ -1,18 +1,18 @@
 package database;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.jdbc.Statement;
 
 /**
  * 
  * @author ASUS
  *Addcourse Addstudent Serchcourse Serchstudent Deletecourse Deletestudent upscore changecourse 
  */
-public class teacher {
+public class teacher implements Serializable{
 	private String tid,tpw,tname;
 	Connection conn;
 	public teacher(String tid, String tpw, String tname) {
