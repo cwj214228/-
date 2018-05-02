@@ -61,8 +61,6 @@ public void getTable() throws SQLException, ClassNotFoundException {
 			detail[i][3] = managestudents.get(i).getMajor();
 		}
 		this.jTable3.setModel(new DefaultTableModel(detail, title));
-		
-		
 		Object title2[] = { "课程编号", "课程名称", "课程学分", "任课老师" };
 		ArrayList<score> managecourses = ModelFactory.managecourse(tea);
 		Object detail2[][] = new Object[managecourses.size()][4];
@@ -429,8 +427,6 @@ public void getTable() throws SQLException, ClassNotFoundException {
 		String msg = JOptionPane.showInputDialog("请输入要删除的课程编号：");
 		score sc=null;
 		new score(msg, "", "", "").Deledecourse(sc);
-		JOptionPane.showMessageDialog(this, "删除成功");
-		
 	}
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -440,9 +436,9 @@ public void getTable() throws SQLException, ClassNotFoundException {
 
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
 		String msg = JOptionPane.showInputDialog("请输入课程编号：");
-		for (int i = 0; i < this.jTable1.getColumnCount(); i++) {
+		for (int i = 0; i < this.jTable1.getRowCount(); i++) {
 			if (this.jTable1.getValueAt(i, 0).equals(msg)) {
-				this.jTabbedPane1.setSelectedIndex(0);
+				this.jTabbedPane1.setSelectedIndex(1);
 				this.jTable1.setRowSelectionInterval(i, i);
 				this.jTable1.setSelectionBackground(Color.blue);
 			}
@@ -456,7 +452,7 @@ public void getTable() throws SQLException, ClassNotFoundException {
 
 	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
 		String msg = JOptionPane.showInputDialog("请输入学生学号：");
-		for (int i = 0; i < this.jTable3.getColumnCount(); i++) {
+		for (int i = 0; i < this.jTable3.getRowCount(); i++) {
 			if (this.jTable3.getValueAt(i, 0).equals(msg)) {
 				this.jTabbedPane2.setSelectedIndex(0);
 				this.jTable3.setRowSelectionInterval(i, i);
