@@ -2,10 +2,8 @@ package View;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
+import Server.Client;
 import database.ModelFactory;
 import database.student;
 import database.teacher;
@@ -21,7 +19,7 @@ import database.teacher;
  * @author  __USER__
  */
 public class A1 extends javax.swing.JFrame {
-
+	static student stu1;
 	/** Creates new form A1 */
 	public A1() {
 		initComponents();
@@ -38,7 +36,6 @@ public class A1 extends javax.swing.JFrame {
 	private void initComponents() {
 
 		buttonGroup1 = new javax.swing.ButtonGroup();
-		buttonGroup2 = new javax.swing.ButtonGroup();
 		jPanel1 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		jLabel2 = new javax.swing.JLabel();
@@ -316,11 +313,12 @@ public class A1 extends javax.swing.JFrame {
 	}
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-		String sid = jTextField1.getText();
-		String spw = jPasswordField1.getText();
+		String id = jTextField1.getText();
+		String pw = jPasswordField1.getText();
 		if (jRadioButton1.isSelected()) {
 			try {
-				student stu = ModelFactory.slogin(sid, spw);
+				Client c=new Client();
+				student stu=c.slogin(id, pw);
 				if(stu==null)
 					throw new Exception("’À∫≈≤ª¥Ê‘⁄ªÚ’ﬂ√‹¬Î¥ÌŒÛ");
 				this.hide();
@@ -331,7 +329,8 @@ public class A1 extends javax.swing.JFrame {
 			} 
 		} else if (jRadioButton2.isSelected()) {
 			try {
-				teacher tc = ModelFactory.tlogin(sid, spw);
+				Client c=new Client();
+				teacher tc = c.tlogin(id, pw);
 				if(tc==null)
 					throw new Exception("’À∫≈≤ª¥Ê‘⁄ªÚ’ﬂ√‹¬Î¥ÌŒÛ");
 				this.hide();
@@ -372,7 +371,6 @@ public class A1 extends javax.swing.JFrame {
 	//GEN-BEGIN:variables
 	// Variables declaration - do not modify
 	private javax.swing.ButtonGroup buttonGroup1;
-	private javax.swing.ButtonGroup buttonGroup2;
 	private javax.swing.JButton jButton1;
 	private javax.swing.JButton jButton2;
 	private javax.swing.JLabel jLabel1;
